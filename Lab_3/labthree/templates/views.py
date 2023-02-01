@@ -1,5 +1,7 @@
-from django.shortcuts import render
 from django.http import HttpResponse
+from django.shortcuts import render, get_object_or_404
+from .models import *
+
 # Create your views here.
 
 def index(request):
@@ -17,10 +19,10 @@ def view_specific_year(request, year):
     specific_year = Book.objects.filter(year = year)
     return render(request, 'all_books.html', {'books':specific_year})
 
-def view_specific_category(request, category):
-    specific_category = Book.objects.filter(category__iexact=category)
-    return render(request, 'all_books.html', {'books':specific_category})
+def view_specific_genre(request, genre):
+    specific_genre = Book.objects.filter(genre__iexact=genre)
+    return render(request, 'all_books.html', {'books':specific_genre})
 
-def view_category_year(request, category, year):
-    specific_category_year = Book.objects.filter(category__iexact=category, year = year)
-    return render(request,'all_books.html', {'books':specific_category_year}  )
+def view_genre_year(request, genre, year):
+    specific_genre_year = Book.objects.filter(genre__iexact=genre, year = year)
+    return render(request,'all_books.html', {'books':specific_genre_year}  )
