@@ -8,4 +8,6 @@ urlpatterns = [
    path('books/year/<int:year>', view_specific_year, name='all_books'),
    path('books/genre/<str:genre>', view_specific_genre, name='all_books'),
    path('books/genre/<str:genre>/year/<int:year>',view_genre_year, name="all_books"),
+   path('customer/<int:custid>',show_customer, name="customer"),
+
 ]

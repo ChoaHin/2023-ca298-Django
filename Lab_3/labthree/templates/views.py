@@ -28,9 +28,9 @@ def view_genre_year(request, genre, year):
     specific_genre_year = Book.objects.filter(genre__iexact=genre, year = year)
     return render(request,'all_books.html', {'books':specific_genre_year})
 
-def show_record(request):
-    cust = Customer.objects.get(id=id) # get a customer with id=1
+def show_customer(request, custid):
+    cust = get_object_or_404(Customer, id=custid) # get a customer with id=1
     # extract a list of book ids from borrowings 
     # from Borrow where customer = cust
-    borrowings = Borrow.objects.filter(customer=cust)
-    return render(request, 'book.html', {'borrowings':borrowings}) 
+    record = Record.objects.filter(customer = custid)
+    return render(request, 'customer.html', {'customer':cust, 'record':record}) 
