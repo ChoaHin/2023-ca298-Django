@@ -8,7 +8,9 @@
     <div class="card h-100">
       <!-- <img src="..." class="card-img-top" alt="..."> image tag -->
       <div class="card-body">
-        <h5 class="card-title">-{{b.title}}-</h5>
+        <a class="card-title" href="http://127.0.0.1:8000/books/{{b.id}}"
+          >{{b.title}}</a
+        >
         <h6 class="card-subtitle mb-2 text-muted">{{b.author}}</h6>
         <h7 class="card-subtitle mb-2 text-muted">{{b.year}}</h7>
         <p class="card-text">{{b.description}}</p>

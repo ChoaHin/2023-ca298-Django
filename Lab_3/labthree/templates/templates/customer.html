@@ -1,0 +1,7 @@
+<!-- This is a snippet, the boilerplate of the page. e.g. extends 'base.html' etc.. has been omitted -->
+{% extends 'index.html' %}
+<ul>
+  {% for borrow in borrowings %}
+  <li>borrow.book.title - borrow.due_date</li>
+  {% endfor %}
+</ul>
