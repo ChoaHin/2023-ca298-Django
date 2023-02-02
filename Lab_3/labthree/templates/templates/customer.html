@@ -7,7 +7,7 @@
 	<ul>
 	{% for rec in record %}
 	  {%  if not rec.is_returned %}
-	  <li>{{rec.book.title}}</li>
+	  <li>{{rec.book.title}} - {{rec.due_date}}</li>
 	  {% endif %}  
 	{% endfor %}
 	</ul>
@@ -17,7 +17,7 @@
 	<ul>
 	{% for rec in record %}
 	  {%  if rec.is_returned %}
-	  <li>{{rec.book.title}}</li>
+	  <li>{{rec.book.title}} - {{rec.due_date}}</li>
 	  {% endif %}  
 	{% endfor %}
 	</ul>

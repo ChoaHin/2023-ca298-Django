@@ -28,4 +28,5 @@ class Record(models.Model):
     id = models.AutoField(primary_key = True)
     customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, blank=True)
     book = models.ForeignKey(Book, on_delete=models.SET_NULL, null=True, blank=True)
+    due_date = models.DateField(default=datetime.date.today() + datetime.timedelta(days=7))
     is_returned = models.BooleanField()
