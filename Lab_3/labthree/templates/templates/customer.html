@@ -1,7 +1,8 @@
 <!-- This is a snippet, the boilerplate of the page. e.g. extends 'base.html' etc.. has been omitted -->
 {% extends 'index.html' %}
+<h1>{{customer.first_name}} {{customer.last_name}}</h1>
 <ul>
-  {% for borrow in borrowings %}
-  <li>borrow.book.title - borrow.due_date</li>
+  {% for rec in record %}
+  <li>{{rec.book.title}} - {{rec.is_returned}}</li>
   {% endfor %}
 </ul>

@@ -13,7 +13,8 @@ def view_all_books(request):
 
 def view_single_book(request, bookid):
     single_book = get_object_or_404(Book, id=bookid)
-    return render(request, 'single_book.html', {'book':single_book})
+    record = Record.objects.filter(book = bookid)
+    return render(request, 'single_book.html', {'book':single_book, 'record':record})
 
 def view_specific_year(request, year):
     specific_year = Book.objects.filter(year = year)

@@ -13,10 +13,31 @@
         <p class="card-text">{{book.description}}</p>
       </div>
       <div class="card-footer">
-        <small class="text-muted">{{book.category}}</small>
+        <small class="text-muted">{{book.genre}}</small>
       </div>
     </div>
   </div>
 </div>
+
+<!-- This is a snippet, the boilerplate of the page. e.g. extends 'base.html' etc.. has been omitted -->
+<br>
+<h5>Borrowing</h5>
+<ul>
+{% for rec in record %}
+  {%  if not rec.is_returned %}
+  <li>{{rec.customer.first_name}} {{rec.customer.last_name}}</li>
+  {% endif %}  
+{% endfor %}
+</ul>
+
+<br>
+<h5>Returned</h5>
+<ul>
+{% for rec in record %}
+  {%  if rec.is_returned %}
+  <li>{{rec.customer.first_name}} {{rec.customer.last_name}}</li>
+  {% endif %}  
+{% endfor %}
+</ul>
 
 {% endblock %}
