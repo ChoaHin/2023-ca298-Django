@@ -1,5 +1,13 @@
 from .views import *
-from django.urls import path
+from django.urls import path, include
+from rest_framework import routers
+from . import views
+
+# create and define our router 
+router = routers.DefaultRouter()
+router.register(r'customer', views.CustomerViewSet)
+router.register(r'book',views.BookViewSet)
+router.register(r'record', views.RecordViewSet)
 
 urlpatterns = [
    path('', index, name="index"),
@@ -14,4 +22,6 @@ urlpatterns = [
    path('divide', api_divide, name='api_divide'),
    path('multiply', api_multiply, name='api_multiply'),
    path('exponential', api_exponential, name='api_exponential'),
+   path('api-auth/', include('rest_framework.urls')),
+   path('api',include(router.urls),)    
 ]

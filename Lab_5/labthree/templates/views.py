@@ -2,6 +2,9 @@ from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from .models import *
 from django.http import JsonResponse # import the jsonresponse object
+from rest_framework import viewsets
+from .models import *
+from .serializers import *
 
 # Create your views here.
 
@@ -86,3 +89,17 @@ def api_exponential(request):
     exponentialed = num1 ** num2
     resp_dict = {'result':exponentialed}
     return JsonResponse(resp_dict)
+
+
+## viewset for customers
+class CustomerViewSet(viewsets.ModelViewSet):
+    serializer_class = CustomerSerializer
+    queryset = Customer.objects.all()
+
+class BookViewSet(viewsets.ModelViewSet):
+    serializer_class = BookSerializer
+    queryset = Book.objects.all()
+
+class RecordViewSet(viewsets.ModelViewSet):
+    serializer_class = RecordSerializer
+    queryset = Record.objects.all()
