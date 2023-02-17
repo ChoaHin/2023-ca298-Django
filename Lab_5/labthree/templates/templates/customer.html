@@ -1,0 +1,24 @@
+<!-- This is a snippet, the boilerplate of the page. e.g. extends 'base.html' etc.. has been omitted -->
+{% extends 'index.html' %}
+{% block content %}
+	<h3>{{customer.first_name}} {{customer.last_name}}</h3>
+	<br>
+	<h5>Borrowing</h5>
+	<ul>
+	{% for rec in record %}
+	  {%  if not rec.is_returned %}
+	  <li>{{rec.book.title}} - {{rec.due_date}}</li>
+	  {% endif %}  
+	{% endfor %}
+	</ul>
+	
+	<br>
+	<h5>Returned</h5>
+	<ul>
+	{% for rec in record %}
+	  {%  if rec.is_returned %}
+	  <li>{{rec.book.title}} - {{rec.due_date}}</li>
+	  {% endif %}  
+	{% endfor %}
+	</ul>
+{% endblock%}
