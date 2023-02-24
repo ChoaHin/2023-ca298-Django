@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <title>Ex6</title>
+  </head>
+  <body>
+    <h1>Ex6</h1>
+    <button onclick="ramdomDog()">Dog Boomer!</button>
+    <img id="dogpic" src="" />
+    <script>
+      function ramdomDog() {
+        fetch("https://dog.ceo/api/breeds/image/random") // link to get some json data
+          .then((response) => response.json()) // extract json data from the response
+          .then((data) => {
+            if (data.status == "success") {
+              document.getElementById("dogpic").src = data.message;
+            } else {
+              alert("failed to get image");
+            }
+          });
+      }
+    </script>
+  </body>
+</html>

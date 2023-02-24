@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <title>Ex5</title>
+  </head>
+  <body>
+    <h1>Ex5</h1>
+    <script>
+      fetch("https://swapi.dev/api/planets/1") // link to get some json data
+        .then((response) => response.json()) // extract json data from the response
+        .then((data) => {
+          // data is either a json object or a list of json objects
+          // code to handle the data returned goes here
+          let infols = ["name", "diameter", "climate", "terrain", "population"];
+          for (info of infols) {
+            const para = document.createElement("p");
+            const textNode = document.createTextNode(info + ": " + data[info]);
+            para.appendChild(textNode);
+            document.body.append(para);
+          }
+        });
+    </script>
+  </body>
+</html>
