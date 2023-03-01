@@ -1,0 +1,30 @@
+<!-- create_pizza.html -->
+
+{% extends 'base.html' %} {% block content %}
+<!-- Background image-->
+<div
+  class="bg-image d-flex justify-content-center align-items-center"
+  style="
+    background-image: url('../static/media/create_pizza.jpg');
+    height: 100vh;
+    background-size: cover;
+  "
+>
+  <!--Card-->
+  <div class="card" style="margin: 20vh; width: 30%">
+    <div class="card-body text-center">
+      <h5 class="card-title">Make the best pizza!</h5>
+      <div class="form-group mb-4">
+        <form action="" method="POST">
+          <table>
+            {% csrf_token %} {{ form.as_table }}
+          </table>
+          <button type="submit">Done</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!--Card-->
+</div>
+<!-- Background image-->
+{% endblock %}

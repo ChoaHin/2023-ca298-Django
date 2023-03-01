@@ -1,0 +1,50 @@
+<!--final.html-->
+{% extends 'base.html' %} {% block content %}
+<!-- Background image-->
+<div
+  class="bg-image d-flex justify-content-center align-items-center"
+  style="
+    background-image: url('../static/media/final.jpg');
+    height: auto;
+    background-size: cover;
+  "
+>
+<!--Card-->
+  <div class="card mx-auto" style="margin: 20vh;width: auto; height:auto">
+    <div class="card-body text-center">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <h1 class="card-title">Thank you for ordering,</h1>
+          <h2>{{customer.name}}</h2>
+        </li>
+        <li class="list-group-item">
+        <div class="container">
+          <p><b>Size: </b>{{pizza.size}}</p>
+          <p><b>Crust Size: </b>{{pizza.crust_size}}</p>
+          <p><b>Sauce: </b>{{pizza.sauce}}</p>
+          <p><b>Cheese: </b>{{pizza.cheese}}</p>
+          <h2>Your Toppings</h2>
+          {% for topping in toppings %}
+          <p>{{ topping }}</p>
+          {% endfor %}
+        </li>
+        <li class="list-group-item">
+            <h2>Address</h2>
+            <p>Order will be send to</p>
+            <p><b>{{customer.address1}}</b></p>
+            <p><b>{{customer.address2}}</b></p>
+        </li>
+        </div>
+      </ul>
+          <!--Button-->
+    <a
+    href="{% url 'index' %}"
+    class="button book-text btn btn-primary bg-dark"
+    >Homepage</a>
+    <!--Button-->
+    </div>
+    <!--Card-->
+
+  </div>
+</div>
+{% endblock %}

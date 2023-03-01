@@ -1,9 +1,32 @@
-<!-- index.html -->
-<html>
-  <head>
-    Hello World
-  </head>
-  <body>
-    <p>Hello world</p>
-  </body>
-</html>
+<!--index.html-->
+{% extends 'base.html' %} {% block content %}
+<!-- Background image-->
+<div
+  class="bg-image d-flex justify-content-center align-items-center"
+  style="
+    background-image: url('../static/media/background.jpg');
+    height: auto;
+    background-size: cover;
+  "
+>
+  <!--Create pizza card-->
+  <div class="card mx-auto" style="margin: 20vh; width: 30%">
+    <img
+      src="../static/media/card2.jpg"
+      class="card-img-top-img-fluid"
+      alt="pizza"
+    />
+    <div class="card-body text-center">
+      <h5 class="card-title">Create your own</h5>
+      <p class="card-text">Let's get creative and make your own pizza!</p>
+      <a
+        href="{% url 'create_pizza' %}"
+        class="button book-text btn btn-primary bg-dark"
+        >Place Order</a
+      >
+    </div>
+  </div>
+  <!--Create pizza card-->
+</div>
+<!-- Background image-->
+{%endblock %}
