@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <div id="container"></div>
+    <script>
+      function showAllBooks() {
+        let container = document.getElementById("container"); // load the container
+        container.innerHTML = ""; // delete the content already inside the container
+        let req = "http://127.0.0.1:8000/apibook/";
+        fetch(req) // make a request to this endpoint
+          .then((response) => response.json()) // with our response, get the json data returned
+          .then((data) => {
+            container.innerHTML += `<ol id="book-list"></ol>`; // create an empty list
+            data.forEach((elem) => {
+              let bookList = document.getElementById("book-list"); // load the book lsit we just created
+              let bookString = `<li>${elem.title} - ${elem.author} - 
+                  <button onclick="viewSingleBook(${elem.id})">View</button>
+                  </li>`; // create a new li element containing info on our book
+              bookList.innerHTML += bookString; // add the li element to the list of books
+            });
+          });
+      }
+      showAllBooks();
+
+      function viewSingleBook(bookId) {
+        let container = document.getElementById("container"); // load the container
+        container.innerHTML = ""; // delete the content already inside the container
+        let req = `http://127.0.0.1:8000/apibook/${bookId}`;
+        // let req = "http://127.0.0.1:8000/apibook/" + bookId;
+        fetch(req) // make a request to this endpoint
+          .then((response) => response.json()) // with our response, get the json data returned
+          .then((data) => {
+            container.innerHTML += `<h2>${data.title}</h2>`;
+            container.innerHTML += `<p>${data.author}</p>`;
+            container.innerHTML += `<p>${data.genre}</p>`;
+            container.innerHTML += `<p>${data.year}</p>`;
+            container.innerHTML += `<button onclick="showAllBooks()">Back</button>`;
+          });
+      }
+    </script>
+    <form id="book-form">
+      <!-- fields = ['title', 'author', 'genre', 'year', 'number_in_inventory'] -->
+      Enter title: <input type="text" id="title" /> Enter author:
+      <input type="text" id="author" /> Enter genre:
+      <input type="text" id="genre" /> Enter year:
+      <input type="number" id="year" /> Enter number in inventory:
+      <input type="number" id="number_in_inventory" />
+      <button type="submit">Create new book</button>
+    </form>
+    <script>
+      let form = document.getElementById("book-form");
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        //todo: load variables from the form
+        let title = document.getElementById("title").value;
+        let author = document.getElementById("author").value;
+        let genre = document.getElementById("genre").value;
+        let year = document.getElementById("year").value;
+        let number_in_inventory = document.getElementById(
+          "number_in_inventory"
+        ).value;
+        // take variables and construct JSON object
+        // fields = ['title', 'author', 'genre', 'year', 'number_in_inventory']
+        let book = {
+          title: title,
+          author: author,
+          genre: genre,
+          year: year,
+          number_in_inventory: number_in_inventory,
+        };
+
+        // console.log(book);
+        // send as a POST request to http://127.0.0.1:8000/api/books/
+        fetch("http://127.0.0.1:8000/apibook/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(book),
+        })
+          // refresh the page using window.location.reload;
+          .then((response) => response.json());
+        window.location.reload();
+      });
+    </script>
+  </body>
+</html>
