@@ -6,17 +6,10 @@ class Book(models.Model):
     id = models.AutoField(primary_key = True)
     title = models.CharField(max_length = 30)
     author = models.CharField(max_length = 30)
-    genre_choice = [
-        ('HORROR','Horror'),
-        ('ROMANCE','Romance'),
-        ('FANTASY','Fantasy'),
-        ('SCIFI','Scifi'),
-        ('EDCUCATION','Education'),
-        ('OTHER','Other') ]
-    genre = models.CharField(choices=genre_choice, default='Other', max_length=20)
-    YEAR_CHOICES = [(r,r) for r in range(0000, datetime.date.today().year+1)]
-    year = models.IntegerField(('year'), choices=YEAR_CHOICES, default=datetime.datetime.now().year)
-    description = models.TextField(null=True)
+    genre = models.CharField(max_length=20)
+    # YEAR_CHOICES = [(r,r) for r in range(0000, datetime.date.today().year+1)]
+    year = models.IntegerField()
+    description = models.TextField(null=True, blank=True)
     number_in_inventory = models.IntegerField()
 
 class Customer(models.Model):

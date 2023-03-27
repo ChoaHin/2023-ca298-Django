@@ -75,7 +75,7 @@
           number_in_inventory: number_in_inventory,
         };
 
-        // console.log(book);
+        console.log(book);
         // send as a POST request to http://127.0.0.1:8000/api/books/
         fetch("http://127.0.0.1:8000/apibook/", {
           method: "POST",
@@ -86,7 +86,7 @@
         })
           // refresh the page using window.location.reload;
           .then((response) => response.json());
-        window.location.reload();
+        // window.location.reload();
       });
     </script>
   </body>
