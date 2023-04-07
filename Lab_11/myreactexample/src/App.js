@@ -1,17 +1,22 @@
 import logo from './logo.svg';
 import './App.css';
-
-function HeadingComponent(){
-	return (
-		<h1>This is my first component</h1>
-	)
-}
+import HeadingComponent from './components/heading';
+import ButtonComponent from './components/button';
+import CounterComponent from './components/counter';
+import CatFacts from './components/catfacts';
+import Booklist from './components/booklist';
+import Book from './components/book';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <HeadingComponent />
+        <HeadingComponent name="Adam"/>
+        <ButtonComponent />
+        <CounterComponent />
+        <CatFacts />
+        <Booklist />
+        <Book id={1} />
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
