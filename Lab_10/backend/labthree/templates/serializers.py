@@ -10,7 +10,7 @@ class CustomerSerializer(serializers.HyperlinkedModelSerializer):
 class BookSerializer(serializers.HyperlinkedModelSerializer):
 	class Meta:
 		model = Book
-		fields = ['title', 'author', 'genre', 'year', 'number_in_inventory']
+		fields = ['id', 'title', 'author', 'genre', 'year', 'number_in_inventory']
 
 class RecordSerializer(serializers.HyperlinkedModelSerializer):
 	class Meta:
